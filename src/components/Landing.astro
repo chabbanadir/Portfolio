@@ -1,0 +1,43 @@
+---
+const { data } = Astro.props;
+---
+
+<section class="py-16 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-4">
+    <!-- Title -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-6xl font-bold text-blue-500 underline decoration-wavy decoration-gray-500">
+        Some of our Landing Pages
+      </h2>
+    </div>
+  
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-12">
+
+        {data.map((item: { img: string | null | undefined; title: unknown; subtitle: unknown; }) => (
+        <div class="relative overflow-hidden h-72 md:h-96 group rounded-lg shadow-lg">
+                <!-- Image -->
+                <img
+                    src={item.img}
+                    alt="Project Image"
+                    class="absolute top-0 left-0 w-full h-auto min-h-full object-cover transform transition-transform duration-5000 group-hover:translate-y-[-80%]"
+                />
+                <!-- Overlay Text -->
+                <div class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="text-center text-white">
+                    <h3 class="text-xl font-bold">{item.title}</h3>
+                    <p class="text-sm">{item.subtitle}</p>
+                    </div>
+                </div>
+                </div>
+        ))}
+        <!-- Card with Dynamic Height Adjustment -->
+      
+      </div>
+
+  </section>
+  
+  
+
+  <style>
+
+  </style>

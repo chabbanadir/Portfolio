@@ -1,0 +1,27 @@
+---
+// src/components/HeroSection.astro
+---
+<div class="bg-blue-50 py-20 text-center">
+  <h2 class="text-4xl font-extrabold text-blue-500 arcade-text mb-4">I'm Mohamed Nadir Chabba</h2>
+  <p class="text-lg text-gray-700">Full Stack Developer | DevOps Enthusiast | AI/ML Explorer</p>
+  <div class="mt-6">
+    <a href="/resume.pdf" class="px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-700">
+      Download Resume
+    </a>
+    <a href="#projects" class="ml-4 px-6 py-3 bg-gray-800 text-white rounded-md hover:bg-gray-700">
+      View Projects
+    </a>
+  </div>
+</div>
+<style>
+  .arcade-text {
+    font-family: 'Press Start 2P', cursive;
+    animation: blink 1s step-start infinite;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  </style>
+  

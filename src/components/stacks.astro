@@ -1,0 +1,43 @@
+---
+const { data , title } = Astro.props;
+---
+<style>
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  
+    .animate-scroll {
+      animation: scroll 25s linear infinite;
+      display: flex; /* Ensures horizontal alignment */
+      width: calc(200%); /* Matches content duplication width */
+    }
+  
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  </style>
+  
+  <section class="relative max-w-5xl mx-auto  py-1 overflow-hidden ">
+    <!-- Scrolling Container -->
+     <h3 class="ml-4 text-3xl font-bold text-textPrimary mb-4">
+          {title}</h3>
+    <div class="animate-scroll flex items-center no-scrollbar space-x-12">
+      <!-- Original Logos + Duplicated Logos -->
+      {[...data, ...data, ...data, ...data].map((logo) => (
+        <div class="flex flex-col items-center space-y-2 min-w-max">
+          <img src={logo.img} alt={logo.title} class="h-12 w-12">
+          <p class="text-textPrimary font-medium">{logo.title}</p>
+        </div>
+      ))}
+    </div>
+  </section>

@@ -1,0 +1,227 @@
+---
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Footer from '../components/Footer.astro';
+import HeroSection from '../components/HeroSection.astro';
+import Landing from '../components/Landing.astro';
+import ProjectSection from '../components/ProjectSection.astro';
+import Stacks from '../components/stacks.astro';
+import Layout from '../layouts/Layout.astro';
+const data = [
+  {
+    img: '/Project1.png',
+    title: 'Project Title 1',
+    subtitle: 'Digital Services / Web Design',
+  },
+  {
+    img: '/Projet4.png',
+    title: 'Project Title 4',
+    subtitle: 'SEO Optimization',
+  },
+  {
+    img: '/Project5.png',
+    title: 'Project Title 3',
+    subtitle: 'Mobile App Design',
+  },
+  {
+    img: '/Project2.png',
+    title: 'Project Title 2',
+    subtitle: 'E-Commerce Development',
+  },
+  {
+    img: '/Projet3.png',
+    title: 'Project Title 3',
+    subtitle: 'Mobile App Design',
+  },
+  
+];
+const backendData = [
+  {
+    img: "/Backend Development/c--4.svg",
+    alt: "C++",
+    title: "C++",
+  },
+  {
+    img: "/Backend Development/c.svg",
+    alt: "C",
+    title: "C",
+  },
+  {
+    img: "/Backend Development/strapi.svg",
+    alt: "Starpi",
+    title: "Starpi",
+  },
+  {
+    img: "/Backend Development/dot-net-core.svg",
+    alt: ".NET Core",
+    title: ".NET Core",
+  },
+  {
+    img: "/Backend Development/flask-icon.svg",
+    alt: "Flask",
+    title: "Flask",
+  },
+  {
+    img: "/Backend Development/java.svg",
+    alt: "Java",
+    title: "Java",
+  },
+  {
+    img: "/Backend Development/python-icon.svg",
+    alt: "Python",
+    title: "Python",
+  },
+  {
+    img: "/Backend Development/spring-boot-icon.svg",
+    alt: "Spring Boot",
+    title: "Spring Boot",
+  },
+];
+const databaseData = [
+  {
+    img: "/Database/MongoDB.svg",
+    alt: "MongoDB",
+    title: "MongoDB",
+  },
+  {
+    img: "/Database/mysql.svg",
+    alt: "MySQL",
+    title: "MySQL",
+  },
+  {
+    img: "/Database/postgresql.svg",
+    alt: "PostgreSQL",
+    title: "PostgreSQL",
+  },
+  {
+    img: "/Database/SQLite.svg",
+    alt: "SQLite",
+    title: "SQLite",
+  },
+];
+const devopsData = [
+  {
+    img: "/DevOps & Tools/apache-13.svg",
+    alt: "Apache",
+    title: "Apache",
+  },
+  {
+    img: "/DevOps & Tools/github-icon.svg",
+    alt: "GitHub",
+    title: "GitHub",
+  },
+  {
+    img: "/DevOps & Tools/linux-icon.svg",
+    alt: "Linux",
+    title: "Linux",
+  },
+  {
+    img: "/DevOps & Tools/nginx-1.svg",
+    alt: "Nginx",
+    title: "Nginx",
+  },
+  {
+    img: "/DevOps & Tools/openstack-icon.svg",
+    alt: "OpenStack",
+    title: "OpenStack",
+  },
+  {
+    img: "/DevOps & Tools/Postman.svg",
+    alt: "Postman",
+    title: "Postman",
+  },
+];
+
+const frontendData = [
+  {
+    img: "/Frontend Development/angular-icon.svg",
+    alt: "Angular",
+    title: "Angular",
+  },
+  {
+    img: "/Frontend Development/bootstrap-5-1.svg",
+    alt: "Bootstrap",
+    title: "Bootstrap",
+  },
+  {
+    img: "/Frontend Development/css-3.svg",
+    alt: "CSS3",
+    title: "CSS3",
+  },
+  {
+    img: "/Frontend Development/html-1.svg",
+    alt: "HTML5",
+    title: "HTML5",
+  },
+  {
+    img: "/Frontend Development/javascript.svg",
+    alt: "JavaScript",
+    title: "JavaScript",
+  },
+  {
+    img: "/Frontend Development/tailwind-css.svg",
+    alt: "Tailwind CSS",
+    title: "Tailwind CSS",
+  },
+  {
+    img: "/Frontend Development/typescript-.svg",
+    alt: "TypeScript",
+    title: "TypeScript",
+  },
+  {
+    img: "/Frontend Development/vue-icon.svg",
+    alt: "Vue.js",
+    title: "Vue.js",
+  },
+];
+
+---
+<Layout>
+  <HeroSection />
+  <About />
+  <Experience />
+  <ProjectSection />
+  <Landing data={data} />
+  <!-- Collapsible Section for Stacks -->
+  <section class="py-8 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4">
+      <!-- Section Header -->
+      <div
+        id="toggle-stacks"
+        class="flex justify-between items-center cursor-pointer bg-blue-100 p-4 rounded-lg"
+      >
+        <h2 class="text-2xl font-bold text-blue-500">Frameworks et Librairies </h2>
+        <span id="toggle-icon" class="text-xl font-semibold">+</span>
+      </div>
+
+      <!-- Collapsible Content -->
+      <div id="stacks-content" class="hidden text-center mt-4">
+        <Stacks data={backendData} title="Back-end" />
+        <Stacks title="Frontend" data={frontendData} />
+        <Stacks data={databaseData} title="DataBase" />
+        <Stacks data={devopsData} title="DevOps" />
+      </div>
+    </div>
+  </section>
+  <Footer />
+  <!-- Add JavaScript for Collapsible Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleButton = document.getElementById('toggle-stacks');
+      const stacksContent = document.getElementById('stacks-content');
+      const toggleIcon = document.getElementById('toggle-icon');
+
+      if (toggleButton && stacksContent && toggleIcon) {
+        toggleButton.addEventListener('click', () => {
+          if (stacksContent.classList.contains('hidden')) {
+            stacksContent.classList.remove('hidden');
+            toggleIcon.textContent = '-'; // Change to collapse icon
+          } else {
+            stacksContent.classList.add('hidden');
+            toggleIcon.textContent = '+'; // Change to expand icon
+          }
+        });
+      }
+    });
+  </script>
+</Layout>
